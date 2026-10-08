@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dualthrust</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Helvetica Neue", Helvetica, Verdana, system-ui, sans-serif;
+      background-color: #0a120a;
+      background-image:
+        linear-gradient(180deg, #0e1a0e 0%, #050805 100%);
+      color: #222;
+      line-height: 1.5;
+    }
+
+    #page {
+      width: min(820px, 100%);
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 0 64px rgba(0, 40, 0, 0.85);
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(180deg, #122012 0%, #0a120a 100%);
+      border-bottom: 4px solid #3dba3d;
+      padding: 1.5rem 1rem 1rem;
+      color: #e8f5e8;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: #5fd85f;
+      text-shadow: 0 2px 0 #0a2a0a;
+    }
+
+    header .tagline {
+      margin: 0.5rem 0 0;
+      color: #a0c8a0;
+      font-size: 1rem;
+    }
+
+    .hero {
+      display: block;
+      width: 100%;
+      height: auto;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      background: #000;
+    }
+
+    #pagebody {
+      padding: 1.25rem 1.75rem 2rem;
+    }
+
+    section {
+      margin-bottom: 1.75rem;
+    }
+
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.35rem;
+      color: #1a2e1a;
+      border-bottom: 1px solid #d0e4d0;
+      padding-bottom: 0.25rem;
+    }
+
+    section > p {
+      margin: 0.5rem 0 0.75rem;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    ul {
+      margin: 0.25rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 0.35rem 0;
+    }
+
+    a {
+      color: #2a8a2a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #1a5a1a;
+      text-decoration: underline;
+    }
+
+    .play-btn {
+      display: inline-block;
+      margin: 0.5rem 0 1rem;
+      padding: 0.65rem 1.4rem;
+      background: #3dba3d;
+      color: #0a1200 !important;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none !important;
+      box-shadow: 0 2px 0 #1a6a1a;
+    }
+
+    .play-btn:hover {
+      background: #52d052;
+      color: #0a1200 !important;
+    }
+
+    .downloads {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0.75rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .downloads li {
+      margin: 0;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #d0e4d0;
+      border-radius: 6px;
+      background: #f4faf4;
+    }
+
+    .downloads .note {
+      display: block;
+      color: #555;
+      font-size: 0.85rem;
+      font-weight: normal;
+    }
+
+    .version {
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    table.ships {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+
+    table.ships th,
+    table.ships td {
+      text-align: left;
+      padding: 0.35rem 0.5rem;
+      border-bottom: 1px solid #e0ece0;
+    }
+
+    table.ships th {
+      color: #1a2e1a;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: #0a120a;
+      color: #90b090;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      line-height: 1.4;
+    }
+
+    footer a {
+      color: #5fd85f;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="page">
+    <header>
+      <h1>dualthrust</h1>
+      <p class="tagline">CRT-green cave lander — two engines, nothing else</p>
+    </header>
+
+    <img class="hero" src="images/screenshot.png" alt="dualthrust: lifting off from a landing pad">
+
+    <div id="pagebody">
+      <section>
+        <h2>Play in the browser</h2>
+        <p>
+          The whole game runs in a web page (WebAssembly + WebGL / software).
+          Keyboard and gamepads work; browsers start audio only after the first
+          key press or click. Built with Emscripten and packaged with Nix.
+        </p>
+        <a class="play-btn" href="play/dualthrust.html">Play dualthrust (WASM)</a>
+        <ul>
+          <li><a href="https://github.com/Grumbel/dualthrust">Source code</a></li>
+          <li><a href="https://github.com/Grumbel/dualthrust#build-and-run">Native build (Nix / CMake)</a></li>
+        </ul>
+      </section>
+
+      <section id="download">
+        <h2>Download</h2>
+        <p>
+          Built from the same source as the browser version,
+          <span class="version">version @version@</span>.
+        </p>
+        <ul class="downloads">
+          <li>
+            <a href="downloads/r36s/dualthrust.zip">R36S and other PortMaster handhelds</a>
+            <span class="note">Native aarch64 build for the R36S (ArkOS). Put the zip into
+              <code>ports/PortMaster/autoinstall/</code> and start PortMaster, or unpack it to
+              <code>/roms/ports/</code>.</span>
+          </li>
+          <li>
+            Linux (source / Nix)
+            <span class="note">Build from source with Nix
+              (<code>nix run github:Grumbel/dualthrust</code>)
+              or CMake, SDL2 and Box2D.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>About</h2>
+        <p>
+          A small CRT-green <strong>cave lander</strong> with two engines and nothing else.
+          Each trigger drives one engine: push both to climb, favour one side to
+          rotate and slide sideways. Fly through a 2D cave, set the ship down on
+          a landing pad, and haul crates with a winch and hook. The ship is a real
+          rigid body (Box2D) with sprung landing legs; gravity never stops pulling.
+          Written in C++17 with SDL2; all sound is synthesised on the fly.
+        </p>
+      </section>
+
+      <section>
+        <h2>Playing</h2>
+        <p>
+          Equal thrust lifts you straight up, uneven thrust spins you, and a tilted
+          ship pushes sideways. Land slowly and upright on a pad (or anywhere the
+          ground allows). Hard impacts destroy the ship; softer ones bounce.
+          Retract the landing legs for tight tunnels. Deploy the rope, grab one of
+          the twelve crates, and deliver it to a pad — heavy loads pull the ship down.
+        </p>
+        <p>
+          Eighteen ship presets (Narrow, Medium, Wide, Barge, Dart, Gnat, Hauler,
+          Frigate, Atlas, Dragonfly, Colossus and more), switched in Options or with
+          <strong>S</strong>. Heavier ships are steadier; the big four-thruster ones
+          use the sticks for extra thrusters.
+        </p>
+      </section>
+
+      <section>
+        <h2>Controls</h2>
+        <ul>
+          <li><strong>Triggers</strong>, L1/R1, or stick up (left/right) — left / right engine</li>
+          <li><strong>W / Up</strong>, <strong>Down / Right Alt</strong> — extra thrusters on the big ships</li>
+          <li><strong>Left Ctrl / Right Ctrl</strong> (or A/D, arrows) — full thrust; Shift for half</li>
+          <li><strong>Space</strong> (keyboard) or <strong>X</strong> (gamepad) — retract / extend landing legs</li>
+          <li><strong>Q / E</strong> or D-pad left/right — deploy / retract the hook cable</li>
+          <li><strong>R</strong> or <strong>A</strong> (gamepad) — grab / release a crate</li>
+          <li><strong>Enter</strong> or <strong>A/B</strong> — respawn after a crash</li>
+          <li><strong>Y</strong> or <strong>G</strong> — new cave</li>
+          <li><strong>Tab</strong>, mouse wheel, or D-pad up/down — zoom (Near / Medium / Far)</li>
+          <li><strong>S</strong> or Select — next ship</li>
+          <li><strong>X</strong> — swap left/right engines</li>
+          <li><strong>F</strong> or Alt+Enter — fullscreen</li>
+          <li><strong>M</strong> — sound on/off</li>
+          <li><strong>Start / Escape</strong> — pause menu</li>
+        </ul>
+        <p>
+          On-screen hints follow the last device you used (keyboard or gamepad).
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      <a href="https://github.com/Grumbel/dualthrust">dualthrust</a>
+      · GPL-3.0-or-later
+      · site built with Nix, deployed via GitHub Pages
+    </footer>
+  </div>
+</body>
+</html>
